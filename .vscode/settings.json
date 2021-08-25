@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp",
+        "limits": "cpp",
+        "*.inc": "cpp",
+        "condition_variable": "cpp"
     }
 }

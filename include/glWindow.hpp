@@ -7,7 +7,7 @@
 class GLWindow {
 private:
     bool ready;
-    std::string y;
+    std::string windowTitle;
     GLFWwindow* _window;
 
 public:
