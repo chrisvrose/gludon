@@ -54,4 +54,5 @@ uint createShaderProgram(uint vs, uint fs)
 
     glLinkProgram(program);
     glValidateProgram(program);
+    return program;
 }

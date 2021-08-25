@@ -26,8 +26,9 @@ int main(void)
     };
 
     uint vbo,vao;
-    glGenBuffers(1, &vbo);
     glGenVertexArrays(1,&vao);
+    glBindVertexArray(vao+66);
+    glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof vertices, &vertices, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
@@ -42,9 +43,8 @@ int main(void)
         ;
 
     uint shaderProgram = createShaderProgram(vb,fb);
-
+    std::cout<<shaderProgram<<std::endl;
     glUseProgram(shaderProgram);
-
 
     // consider this as the game loop
     /* Loop until the user closes the window */
@@ -52,6 +52,7 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         /* Swap front and back buffers */
         glfwSwapBuffers(window.window());
