@@ -8,7 +8,7 @@ int main(void)
 {
     GLWindow window;
 
-    std::string y = "noper";
+    // std::string y = "noper";
     if (!window.loadWindow(640, 480, "Hello world")) {
         std::cout << "Failed to open window";
     }
@@ -27,7 +27,7 @@ int main(void)
 
     uint vbo,vao;
     glGenVertexArrays(1,&vao);
-    glBindVertexArray(vao+66);
+    glBindVertexArray(vao);
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof vertices, &vertices, GL_STATIC_DRAW);
