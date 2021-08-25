@@ -19,7 +19,10 @@ public:
     }
     GLFWwindow* window(){return _window;}
 
-    bool loadWindow(int, int, std::string);
+    /**
+     * Load a window for use
+    */
+    bool loadWindow(int width, int height, std::string windowTitle);
 
     /**
      * Safely close the window if not already ready
