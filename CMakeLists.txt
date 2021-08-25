@@ -17,6 +17,21 @@ enable_testing()
 
 include_directories(include)
 
+# black magic to create a string out of a shader in the shaders/ folder
+function(make_includable input_file output_file)
+    file(READ ${input_file} content)
+    set(delim "for_c++_include")
+    set(content "R\"${delim}(\n${content})${delim}\"")
+    file(WRITE ${output_file} "${content}")
+endfunction(make_includable)
+
+
+
+# generate these files
+make_includable(shaders/std.vert gen/shaders/std.vert)
+# add them for including
+include_directories(gen)
+
 add_library(load_script src/load_scripts.cpp)
 add_library(glWindow src/glWindow.cpp)
 
