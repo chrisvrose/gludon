@@ -1,5 +1,9 @@
 # gludon
 
+## Why?
+This has a pre-setup C/C++ template of GLAD/GLFW. GLAD is with OpenGL4.1 basic and should be enough for most academic work.
+Additionally, shaders are included by using #include<>, so that linting and checking still works on the separate files.
+
 
 ## Usage
 
