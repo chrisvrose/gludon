@@ -2,6 +2,7 @@
 #include <iostream>
 #include <load_scripts.hpp>
 
+
 uint compileShader(uint type, std::string& src)
 {
     uint shader = glCreateShader(type);
