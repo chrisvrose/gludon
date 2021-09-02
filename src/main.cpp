@@ -18,21 +18,33 @@ int main(void)
         -0.0f,
         -0.5f,
 
+        0.5f,0.0f,0.0f,
+
         0.5f,
         -0.5f,
 
+        0.0f,0.5f,0.0f,
+
         0.0f,
         0.5f,
+
+        0.0f,0.0f,0.5f,
+
     };
 
-    uint vbo,vao;
-    glGenVertexArrays(1,&vao);
+    uint vbo,
+        // remembers all the attribpointers and everything
+        vao;
+    glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof vertices, &vertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(float)*5,(const void*)(sizeof(float)*2));
+    glEnableVertexAttribArray(1);
 
     std::string fb =
 #include <shaders/simple.frag>
@@ -42,8 +54,8 @@ int main(void)
 #include <shaders/simple.vert>
         ;
 
-    uint shaderProgram = createShaderProgram(vb,fb);
-    std::cout<<shaderProgram<<std::endl;
+    uint shaderProgram = createShaderProgram(vb, fb);
+    // std::cout << shaderProgram << std::endl;
     glUseProgram(shaderProgram);
 
     // consider this as the game loop
