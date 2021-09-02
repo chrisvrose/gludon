@@ -81,8 +81,10 @@ int main(void)
         glBindVertexArray(vao[0]);
 
         uint offsetloc = glGetUniformLocation(shaderProgram.getProgram(), "posoff");
-        std::cout << offsetloc << std::endl;
+        
         glUniform4fv(offsetloc, 1, a);
+
+
         a[0] += 0.001;
         if (a[0] > 1)
             a[0] = -1;
