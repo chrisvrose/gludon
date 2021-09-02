@@ -4,10 +4,13 @@ project(gludon VERSION 0.1.0)
 # opengl - required library
 # glfw helps build opengl contexts
 # glad - loads opengl definitions
+# stb - image loader
 find_package(OpenGL REQUIRED)
 include_directories("lib/glfw/include" "lib/glad/include")
 add_subdirectory("lib/glfw")
 add_subdirectory("lib/glad")
+include_directories("lib/stb")
+
 # link the glfw libs
 link_libraries(glfw ${GLFW_LIBRARIES} glad)
 
