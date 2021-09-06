@@ -4,8 +4,9 @@
 #include <GLFW/glfw3.h>
 #include <glShader.hpp>
 #include <glWindow.hpp>
+#include <glTexture.hpp>
 #include <load_scripts.hpp>
-#include <stb_image.h>
+
 // comment this to disable wireframe mode
 // #define GL_USE_WIREFRAME
 
@@ -21,21 +22,21 @@ int main(void)
     // Any init stuff goes here
     float vertices[] = {
 
-        0.f, 0.f,
+        0.f, 0.f,0.f,
 
-        0.f, 0.5f, 0.f,
+        0.f, 0.5f, 0.f, 0.0f,0.0f,
 
-        0.5f, 0.f,
+        0.5f, 0.f,0.f,
 
-        0.5f, 0.5f, 0.0f,
+        0.5f, 0.5f, 0.0f, 1.f,0.f,
 
-        0.0f, 0.5f,
+        0.0f, 0.5f,0.f,
 
-        0.0f, 0.0f, 0.5f,
+        0.0f, 0.0f, 0.5f, .0f,1.f,
 
-        0.5f, .5f,
+        0.5f, .5f,0.f,
 
-        .5f, .0f, .0f
+        .5f, .0f, .0f, 1.f,1.f
     };
 
     uint eboindices[] = { 0, 1, 2, 2, 3, 1 };
@@ -56,12 +57,17 @@ int main(void)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(eboindices), eboindices, GL_STATIC_DRAW);
     
-    // TODO figure out what this acts on -> ebo or vbo
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
+    
+    // positions
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, 0);
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (const void*)(sizeof(float) * 2));
+    // colors
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (const void*)(sizeof(float) * 3));
     glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(float)*8,(const void*)(sizeof(float)*6));
+    glEnableVertexAttribArray(2);
 
     glShader shaderProgram;
     shaderProgram.load(
@@ -70,7 +76,8 @@ int main(void)
         #include <shaders/simple.frag>
         );
     shaderProgram.use();
-    
+    std::string s = "res/img/container.jpg";
+    glTexture tex(s);
     // std::cout << shaderProgram << std::endl;
     // glUseProgram(shaderProgram);
     float a[4] = { 0 };
