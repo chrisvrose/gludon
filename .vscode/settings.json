@@ -1,11 +1,13 @@
 {
     "files.associations": {
+        "*.json": "jsonc",
         "iostream": "cpp",
         "*.tcc": "cpp",
         "chrono": "cpp",
         "complex": "cpp",
         "limits": "cpp",
         "*.inc": "cpp",
-        "condition_variable": "cpp"
+        "condition_variable": "cpp",
+        "unordered_map": "cpp"
     }
 }

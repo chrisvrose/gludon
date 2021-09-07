@@ -15,7 +15,10 @@ int main(void)
     GLWindow window;
 
     // std::string y = "noper";
-    if (!window.loadWindow(640, 480, "Hello world")) {
+    std::unordered_map<int,int> window_hints;
+    window_hints[GLFW_RESIZABLE] = GLFW_TRUE;
+    window_hints[GLFW_DECORATED] = GLFW_TRUE;
+    if (!window.loadWindow(640, 480, "Hello world",window_hints)) {
         std::cout << "Failed to open window";
     }
 
@@ -82,6 +85,8 @@ int main(void)
     // glUseProgram(shaderProgram);
     float a[4] = { 0 };
     // consider this as the game loop
+
+    
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window.window())) {
         /* Render here */
