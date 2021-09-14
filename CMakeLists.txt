@@ -9,6 +9,7 @@ find_package(OpenGL REQUIRED)
 include_directories("lib/glfw/include" "lib/glad/include")
 add_subdirectory("lib/glfw")
 add_subdirectory("lib/glad")
+add_subdirectory("lib/glm")
 include_directories("lib/stb")
 
 # link the glfw libs
