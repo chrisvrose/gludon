@@ -6,7 +6,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 # includes for use
-include_directories("lib/glfw/include" "lib/glad/include")
+include_directories("lib/glfw/include" "lib/glad/include" "lib/glm")
 
 # glfw helps build opengl contexts
 add_subdirectory("lib/glfw")
@@ -17,7 +17,7 @@ add_subdirectory("lib/glm")
 # stb - image loader
 include_directories("lib/stb")
 
-# link the glfw libs
+# link the glfw and glad libs (for every executable we create)
 link_libraries(glfw ${GLFW_LIBRARIES} glad)
 
 # allow including from the general include directory
@@ -38,7 +38,7 @@ add_library(glShader src/glShader.cpp)
 add_library(glTexture src/glTexture.cpp)
 
 # final executable
-add_executable(gludon src/main.cpp src/load_scripts.cpp)
+add_executable(gludon src/main.cpp src/load_scripts.cpp src/SquareObject.cpp)
 # link our executable with these nice libraries
 target_link_libraries(gludon glWindow glShader glTexture)
 

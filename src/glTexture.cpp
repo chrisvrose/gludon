@@ -1,3 +1,4 @@
+// skip all these useless formats
 #define STBI_NO_PSD
 #define STBI_NO_BMP
 #define STBI_NO_PSD
@@ -7,6 +8,7 @@
 #define STBI_NO_PIC
 #define STBI_NO_PNM
 #define STB_IMAGE_IMPLEMENTATION
+
 #include <glTexture.hpp>
 #include <glad/glad.h>
 #include <iostream>
