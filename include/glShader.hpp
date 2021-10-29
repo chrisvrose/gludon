@@ -19,4 +19,5 @@ public:
 
     uint getProgram(){return program;}
     bool load(std::string vs,std::string fs);
+    bool loadFromPath(std::string vspath,std::string fspath);
 };

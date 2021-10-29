@@ -19,23 +19,23 @@ link_libraries(glfw ${GLFW_LIBRARIES} glad)
 include_directories(include)
 
 # black magic to create a string out of a shader in the shaders/ folder
-function(make_includable input_file output_file)
-    file(READ ${input_file} content)
-    set(delim "for_c++_include")
-    set(content "R\"${delim}(\n${content})${delim}\"")
-    file(WRITE ${output_file} "${content}")
-endfunction(make_includable)
+# function(make_includable input_file output_file)
+#     file(READ ${input_file} content)
+#     set(delim "for_c++_include")
+#     set(content "R\"${delim}(\n${content})${delim}\"")
+#     file(WRITE ${output_file} "${content}")
+# endfunction(make_includable)
 
 
 
-# generate these shader files
-make_includable(shaders/simple.frag gen/shaders/simple.frag)
-make_includable(shaders/simple.vert gen/shaders/simple.vert)
+# # generate these shader files
+# make_includable(shaders/simple.frag gen/shaders/simple.frag)
+# make_includable(shaders/simple.vert gen/shaders/simple.vert)
 
 # configure resources
 configure_file(res/img/container.jpg ${CMAKE_CURRENT_BINARY_DIR}/res/img/container.jpg COPYONLY)
-# add them for including
-include_directories(gen)
+configure_file(shaders/simple.frag ${CMAKE_CURRENT_BINARY_DIR}/shaders/simple.frag COPYONLY)
+configure_file(shaders/simple.vert ${CMAKE_CURRENT_BINARY_DIR}/shaders/simple.vert COPYONLY)
 
 
 # this file is generated as a separate library in case if needed

@@ -17,6 +17,6 @@ class glTexture{
     glTexture() = delete;
     glTexture(std::string filename);
     unsigned int useTexture();
-    void bind();
+    void use();
     ~glTexture();
 };

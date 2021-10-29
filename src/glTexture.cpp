@@ -36,7 +36,7 @@ glTexture::glTexture(std::string filename)
     ready=true;
 }
 
-void glTexture::bind()
+void glTexture::use()
 {
     if (ready) {
         glBindTexture(GL_TEXTURE_2D, gltexid);

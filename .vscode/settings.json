@@ -8,6 +8,10 @@
         "limits": "cpp",
         "*.inc": "cpp",
         "condition_variable": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "utility": "cpp"
     }
 }

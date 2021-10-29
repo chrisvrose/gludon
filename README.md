@@ -3,7 +3,7 @@
 ## Why?
 This has a pre-setup C/C++ template for working with openGL.
 GLAD is with OpenGL4.1 basic and should be enough for most academic work.
-Additionally, shaders are included by using #include<>, so that linting and checking still works on the separate files.
+Additionally, shaders can be loaded from the path (resources are copied over), so that linting and checking still works on the separate files.
 
 Configured with the following dependencies (All done via git submodules):
 - Glad - OpenGL 4.1
@@ -22,6 +22,8 @@ git clone git@github.com:chrisvrose/gludon.git --recurse-submodules
 
 If you have already cloned it, and need to get the submodules/update dependencies
 ```
+git submodule init
+
 git submodule update
 ```
 

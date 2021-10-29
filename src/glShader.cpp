@@ -1,6 +1,25 @@
 #include <glShader.hpp>
 #include <glad/glad.h>
 #include <iostream>
+#include<fstream>
+#include<string>
+#include<sstream>
+bool glShader::loadFromPath(std::string vspath,std::string fspath){
+    std::ifstream vs;
+    vs.open(vspath);
+    std::stringstream vsstream;
+    vsstream<<vs.rdbuf();
+    std::string vsstr = vsstream.str();
+    // now for the fragment shader
+    std::ifstream fs;
+    fs.open(fspath);
+    std::stringstream fsstream;
+    fsstream<<fs.rdbuf();
+    std::string fsstr = fsstream.str();
+
+    return this->load(vsstr,fsstr);
+    // vsstream
+}
 
 bool glShader::load(std::string vsstr, std::string fsstr)
 {

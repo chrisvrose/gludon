@@ -3,8 +3,8 @@
 
 #include <GLFW/glfw3.h>
 #include <glShader.hpp>
-#include <glWindow.hpp>
 #include <glTexture.hpp>
+#include <glWindow.hpp>
 #include <load_scripts.hpp>
 
 // comment this to disable wireframe mode
@@ -15,31 +15,31 @@ int main(void)
     GLWindow window;
 
     // std::string y = "noper";
-    std::unordered_map<int,int> window_hints;
+    std::unordered_map<int, int> window_hints;
     window_hints[GLFW_RESIZABLE] = GLFW_TRUE;
     window_hints[GLFW_DECORATED] = GLFW_TRUE;
-    if (!window.loadWindow(640, 480, "Hello world",window_hints)) {
+    if (!window.loadWindow(640, 480, "Hello world", window_hints)) {
         std::cout << "Failed to open window";
     }
 
     // Any init stuff goes here
     float vertices[] = {
 
-        0.f, 0.f,0.f,
+        0.f, 0.f, 0.f,
 
-        0.f, 0.5f, 0.f, 0.0f,0.0f,
+        0.f, 0.5f, 0.f, 0.0f, 0.0f,
 
-        0.5f, 0.f,0.f,
+        0.5f, 0.f, 0.f,
 
-        0.5f, 0.5f, 0.0f, 1.f,0.f,
+        0.5f, 0.5f, 0.0f, 1.f, 0.f,
 
-        0.0f, 0.5f,0.f,
+        0.0f, 0.5f, 0.f,
 
-        0.0f, 0.0f, 0.5f, .0f,1.f,
+        0.0f, 0.0f, 0.5f, .0f, 1.f,
 
-        0.5f, .5f,0.f,
+        0.5f, .5f, 0.f,
 
-        .5f, .0f, .0f, 1.f,1.f
+        .5f, .0f, .0f, 1.f, 1.f
     };
 
     uint eboindices[] = { 0, 1, 2, 2, 3, 1 };
@@ -59,8 +59,7 @@ int main(void)
     // binding with bound arraybuffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(eboindices), eboindices, GL_STATIC_DRAW);
-    
-    
+
     // positions
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, 0);
     glEnableVertexAttribArray(0);
@@ -69,24 +68,21 @@ int main(void)
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (const void*)(sizeof(float) * 3));
     glEnableVertexAttribArray(1);
 
-    glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(float)*8,(const void*)(sizeof(float)*6));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (const void*)(sizeof(float) * 6));
     glEnableVertexAttribArray(2);
 
     glShader shaderProgram;
-    shaderProgram.load(
-        #include <shaders/simple.vert>
-        ,
-        #include <shaders/simple.frag>
-        );
+    shaderProgram.loadFromPath(
+        "shaders/simple.vert",
+        "shaders/simple.frag");
     shaderProgram.use();
     std::string s = "res/img/container.jpg";
-    glTexture tex(s);
+    glTexture tex(s);tex.use();
     // std::cout << shaderProgram << std::endl;
     // glUseProgram(shaderProgram);
     float a[4] = { 0 };
     // consider this as the game loop
 
-    
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window.window())) {
         /* Render here */
@@ -95,9 +91,8 @@ int main(void)
         glBindVertexArray(vao[0]);
 
         uint offsetloc = glGetUniformLocation(shaderProgram.getProgram(), "posoff");
-        
-        glUniform4fv(offsetloc, 1, a);
 
+        glUniform4fv(offsetloc, 1, a);
 
         a[0] += 0.001;
         if (a[0] > 1)
