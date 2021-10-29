@@ -43,9 +43,6 @@ private:
 public:
     SquareObject(glm::vec4 a);
     void draw();
-    auto location(){
-        return internalState;
-        }
 
     void changeState(){
         internalState[0] += 0.001;
